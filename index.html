@@ -13,21 +13,93 @@
         height: 100%;
         background: #050505;
         color: #ffffff;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
+        font-family: monospace;
       }
 
       body {
         display: flex;
+        flex-direction: column;
         align-items: center;
+        justify-content: flex-start;
+      }
+
+      header {
+        display: flex;
         justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        width: 100%;
+      }
+
+      button {
+        background: transparent;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-family: monospace;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+
+      button:hover, button:active {
+        background: #ffffff;
+        color: #050505;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      }
+
+      @keyframes glow {
+        from {
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        to {
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+      }
+
+      #bio-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(5, 5, 5, 0.9);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      #bio-content {
+        background: #050505;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 600px;
+        max-height: 80%;
+        overflow-y: auto;
+        font-family: monospace;
+        border: 2px solid #ffffff;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      }
+
+      #close-bio {
+        background: transparent;
+        color: #ffffff;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        float: right;
       }
 
       /* Make sure the canvas behaves nicely in the layout */
       canvas {
         display: block;
         max-width: 100%;
-        max-height: 100%;
+        max-height: calc(100vh - 100px);
       }
     </style>
 
@@ -38,5 +110,42 @@
     <script src="sketch.js" defer></script>
   </head>
   <body>
+    <header>
+      <button id="about-btn">about</button>
+      <button id="contact-btn">contact</button>
+    </header>
+
+    <div id="bio-modal">
+      <div id="bio-content">
+        <button id="close-bio">&times;</button>
+        <h2>About Noir Mak</h2>
+        <p>Cam Mansanarez, known artistically as Noir Mak, is a creative technologist and digital artist whose work explores queerness, identity, and the tension between human vulnerability and machine precision. Based in Colorado, Cam creates immersive visual worlds that merge generative systems, glitch aesthetics, and cyberpunk atmosphere. His practice spans live-coded performance, web-based interactive art, and computational installations that transform code into spaces of reflection, resistance, and transformation.</p>
+        <p>Cam fuses abstraction with queer futurism to challenge traditional notions of visibility and beauty. He works with the belief that digital tools can become vessels for empowerment and self-invention, especially for marginalized communities. Through his pseudonym Noir Mak, he shapes experiences that feel both intimate and otherworldly, celebrating the radical act of being seen.</p>
+        <p>Cam is currently completing his master’s degree in Creative Technology, focusing on generative art, interactive systems, and the creative potential of emerging technologies. His recent work includes Hydra-driven live visuals, Processing-based generative animations, and browser-native art that blends data, poetry, and glitch.</p>
+        <p>As Noir Mak, he creates art that carries rebellion and tenderness in equal measure. His work honors the poetry of glitch, the softness inside cyber aesthetics, and the idea that transformation often begins in the shadows before it becomes luminous.</p>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('about-btn').addEventListener('click', function() {
+        document.getElementById('bio-modal').style.display = 'flex';
+      });
+
+      document.getElementById('close-bio').addEventListener('click', function() {
+        document.getElementById('bio-modal').style.display = 'none';
+      });
+
+      document.getElementById('contact-btn').addEventListener('click', function() {
+        window.location.href = 'mailto:cam@noirmak.com';
+      });
+
+      // Close modal when clicking outside
+      window.addEventListener('click', function(event) {
+        const modal = document.getElementById('bio-modal');
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    </script>
   </body>
 </html>
