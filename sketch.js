@@ -3,7 +3,10 @@ let numLines = 6;
 let baseSize = 60;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  // Calculate available height (viewport minus header and footer)
+  let availableHeight = windowHeight - 180; // Account for header and footer with padding
+  let canvas = createCanvas(windowWidth, availableHeight);
+  canvas.parent('canvas-container');
   textAlign(LEFT, CENTER);
   textFont("monospace");
   noStroke();
@@ -49,5 +52,6 @@ function draw() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  let availableHeight = windowHeight - 180;
+  resizeCanvas(windowWidth, availableHeight);
 }

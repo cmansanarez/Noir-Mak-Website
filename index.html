@@ -21,13 +21,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        overflow: hidden;
       }
 
-      header {
+      header, footer {
         display: flex;
         justify-content: center;
         gap: 20px;
-        padding: 20px;
+        padding: 15px;
         width: 100%;
         background: #000000;
       }
@@ -97,10 +98,17 @@
       }
 
       /* Make sure the canvas behaves nicely in the layout */
+      main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+
       canvas {
         display: block;
         max-width: 100%;
-        max-height: calc(100vh - 100px);
       }
     </style>
 
@@ -116,6 +124,8 @@
       <button id="contact-btn">contact</button>
     </header>
 
+    <main id="canvas-container"></main>
+
     <div id="bio-modal">
       <div id="bio-content">
         <button id="close-bio">&times;</button>
@@ -126,6 +136,10 @@
         <p>As Noir Mak, he creates art that carries rebellion and tenderness in equal measure. His work honors the poetry of glitch, the softness inside cyber aesthetics, and the idea that transformation often begins in the shadows before it becomes luminous.</p>
       </div>
     </div>
+
+    <footer>
+      <button id="work-btn">recent work</button>
+    </footer>
 
     <script>
       document.getElementById('about-btn').addEventListener('click', function() {
@@ -138,6 +152,10 @@
 
       document.getElementById('contact-btn').addEventListener('click', function() {
         window.location.href = 'mailto:cam@noirmak.com';
+      });
+
+      document.getElementById('work-btn').addEventListener('click', function() {
+        window.location.href = 'work.html';
       });
 
       // Close modal when clicking outside

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Recent Work - Noir Mak</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #000000;
+        color: #ffffff;
+        font-family: monospace;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      h1 {
+        font-size: 48px;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .work-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      button, .work-button {
+        background: transparent;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-family: monospace;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        animation: glow 2s ease-in-out infinite alternate;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      button:hover, button:active, .work-button:hover, .work-button:active {
+        background: #ffffff;
+        color: #000000;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      }
+
+      @keyframes glow {
+        from {
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        to {
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+      }
+
+      .back-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="back-button" onclick="window.location.href='index.html'">back</button>
+
+    <h1>Recent Work</h1>
+
+    <div class="work-container">
+      <a href="https://stitchedincode.noirmak.com" target="_blank" class="work-button">Holiday Card 2025</a>
+      <a href="https://lumyn.noirmak.com" target="_blank" class="work-button">Lumyn</a>
+      <a href="https://undertones.noirmak.com" target="_blank" class="work-button">Undertones</a>
+    </div>
+  </body>
+</html>
