@@ -10,7 +10,7 @@ function setup() {
 }
 
 function draw() {
-  background(10);
+  background(5);
   fill(255);
 
   let t = millis() * 0.002; // controls animation speed
