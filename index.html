@@ -110,6 +110,48 @@
         display: block;
         max-width: 100%;
       }
+
+      /* Mobile responsive styles */
+      @media (max-width: 768px) {
+        header, footer {
+          padding: 10px;
+          gap: 10px;
+          flex-shrink: 0;
+        }
+
+        button {
+          padding: 8px 16px;
+          font-size: 14px;
+        }
+
+        #bio-content {
+          margin: 10px;
+          padding: 15px;
+          max-width: 90%;
+          font-size: 14px;
+        }
+
+        #bio-content h2 {
+          font-size: 20px;
+        }
+
+        #bio-content p {
+          font-size: 13px;
+          line-height: 1.5;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header, footer {
+          padding: 8px;
+          gap: 8px;
+        }
+
+        button {
+          padding: 6px 12px;
+          font-size: 12px;
+        }
+      }
     </style>
 
     <!-- p5.js library -->

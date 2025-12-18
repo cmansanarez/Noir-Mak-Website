@@ -3,13 +3,27 @@ let numLines = 6;
 let baseSize = 60;
 
 function setup() {
-  // Calculate available height (viewport minus header and footer)
-  let availableHeight = windowHeight - 180; // Account for header and footer with padding
-  let canvas = createCanvas(windowWidth, availableHeight);
+  // Calculate available height dynamically based on actual header/footer heights
+  let canvas = createCanvas(windowWidth, calculateCanvasHeight());
   canvas.parent('canvas-container');
   textAlign(LEFT, CENTER);
   textFont("monospace");
   noStroke();
+}
+
+function calculateCanvasHeight() {
+  // Get actual heights of header and footer elements
+  let header = document.querySelector('header');
+  let footer = document.querySelector('footer');
+  let headerHeight = header ? header.offsetHeight : 60;
+  let footerHeight = footer ? footer.offsetHeight : 60;
+
+  // Add small buffer for safety
+  let buffer = 20;
+  let availableHeight = windowHeight - headerHeight - footerHeight - buffer;
+
+  // Ensure minimum height
+  return max(availableHeight, 200);
 }
 
 function draw() {
@@ -18,17 +32,20 @@ function draw() {
 
   let t = millis() * 0.002; // controls animation speed
 
+  // Adjust base size for mobile screens
+  let responsiveBaseSize = width < 480 ? 40 : (width < 768 ? 50 : baseSize);
+
   // compute stacked height to center vertically
   let totalHeight = 0;
   for (let i = 0; i < numLines; i++) {
     // use the same size formula here as below
-    let fs = baseSize * pow(0.85, i);
+    let fs = responsiveBaseSize * pow(0.85, i);
     totalHeight += fs * 1.2;
   }
   let startY = height / 2 - totalHeight / 2;
 
   for (let line = 0; line < numLines; line++) {
-    let fs = baseSize * pow(0.85, line);
+    let fs = responsiveBaseSize * pow(0.85, line);
     textSize(fs);
 
     // center the phrase horizontally
@@ -52,6 +69,5 @@ function draw() {
 }
 
 function windowResized() {
-  let availableHeight = windowHeight - 180;
-  resizeCanvas(windowWidth, availableHeight);
+  resizeCanvas(windowWidth, calculateCanvasHeight());
 }
