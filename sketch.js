@@ -149,10 +149,15 @@ function draw() {
   }
 }
 
-// Tap to toggle glitch on mobile
+// Tap to toggle glitch on mobile - only within canvas bounds
 function touchStarted() {
-  glitchToggle = !glitchToggle;
-  return false; // prevents page scroll on touch
+  // Only toggle glitch if touch is within the canvas area
+  if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+    glitchToggle = !glitchToggle;
+    return false; // prevents page scroll on touch within canvas
+  }
+  // Allow default behavior for touches outside canvas (buttons, etc.)
+  return true;
 }
 
 function windowResized() {
