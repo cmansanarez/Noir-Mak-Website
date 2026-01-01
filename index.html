@@ -124,6 +124,8 @@
         justify-content: center;
         align-items: center;
         z-index: 1000;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
 
       #bio-content {
@@ -132,11 +134,13 @@
         padding: 20px;
         border-radius: 10px;
         max-width: 600px;
-        max-height: 80%;
+        max-height: 80vh;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         font-family: monospace;
         border: 2px solid #ffffff;
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        position: relative;
       }
 
       #close-bio {
@@ -146,6 +150,10 @@
         font-size: 24px;
         cursor: pointer;
         float: right;
+        padding: 5px 10px;
+        line-height: 1;
+        z-index: 1001;
+        position: relative;
       }
 
       /* Make sure the canvas behaves nicely in the layout */
@@ -190,20 +198,33 @@
           font-size: 14px;
         }
 
+        #bio-modal {
+          padding: 20px 10px;
+          align-items: flex-start;
+        }
+
         #bio-content {
           margin: 10px;
           padding: 15px;
           max-width: 90%;
+          max-height: 85vh;
           font-size: 14px;
         }
 
         #bio-content h2 {
           font-size: 20px;
+          margin-top: 0;
         }
 
         #bio-content p {
           font-size: 13px;
           line-height: 1.5;
+        }
+
+        #close-bio {
+          font-size: 28px;
+          padding: 8px 12px;
+          margin: -5px -5px 0 0;
         }
       }
 
