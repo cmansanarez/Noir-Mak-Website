@@ -6,7 +6,14 @@ let baseSize = 60;
 let glitchToggle = false; // for mobile tap
 const CHAR_FLIP_PROBABILITY = 0.06;
 const ECHO_PROBABILITY = 0.08;
+const COLOR_FLASH_PROBABILITY = 0.12;
 const GLITCH_CHARS = ["#", "%", "█", "░", "▓", "/", "\\", "_", "x", "*"];
+
+// Color palette
+const BLUE = [48, 79, 254];        // #304ffe
+const PINK = [255, 29, 137];       // #ff1d89
+const YELLOW = [255, 236, 0];      // #ffec00
+const CHARTREUSE = [188, 248, 4];  // #bcf804
 
 function setup() {
   // Calculate available height dynamically based on actual header/footer heights
@@ -98,32 +105,46 @@ function draw() {
         let jx = random(-fs * 0.03, fs * 0.03);
         let jy = random(-fs * 0.04, fs * 0.04);
 
-        // 2) occasional character "bitflip"
+        // 2) occasional character "bitflip" with color flash
+        let bitflipped = false;
         if (random() < CHAR_FLIP_PROBABILITY && c !== " ") {
           c = random(GLITCH_CHARS);
+          bitflipped = true;
+
+          // Bitflipped characters get yellow or chartreuse
+          if (random() < COLOR_FLASH_PROBABILITY) {
+            let col = random() < 0.5 ? YELLOW : CHARTREUSE;
+            fill(col[0], col[1], col[2]);
+          }
         }
 
-        // 3) occasional "duplicate echo" draw (looks like chromatic smear without color)
+        // 3) Chromatic aberration - RGB split echo effect
         if (random() < ECHO_PROBABILITY && c !== " ") {
-          text(c, x + jx * 2.0, baseY + yOffset - jy * 1.5);
+          // Blue offset (left-up)
+          fill(BLUE[0], BLUE[1], BLUE[2], 180);
+          text(c, x + jx * 2.0 - fs * 0.08, baseY + yOffset - jy * 1.5 - fs * 0.05);
+
+          // Pink offset (right-down)
+          fill(PINK[0], PINK[1], PINK[2], 180);
+          text(c, x + jx * 2.0 + fs * 0.08, baseY + yOffset - jy * 1.5 + fs * 0.05);
+
+          // Reset to white for main character
+          fill(255);
         }
 
+        // Draw main character (white unless bitflipped with color)
+        if (!bitflipped) {
+          fill(255);
+        }
         text(c, x + jx, baseY + yOffset + jy);
+
+        // Reset fill to white for next character
+        fill(255);
       } else {
         text(c, x, baseY + yOffset);
       }
 
       x += cw;
-    }
-  }
-
-  // Extra glitch layer: scanline bars across the logo area
-  if (glitchOn) {
-    noStroke();
-    fill(255, 20);
-    for (let s = 0; s < 6; s++) {
-      let y = random(boxY, boxY + boxH);
-      rect(boxX, y, boxW, random(1, 4));
     }
   }
 }
