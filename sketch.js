@@ -4,9 +4,9 @@ let baseSize = 60;
 
 // Glitch effect settings
 let glitchToggle = false; // for mobile tap
-const CHAR_FLIP_PROBABILITY = 0.06;
-const ECHO_PROBABILITY = 0.08;
-const COLOR_FLASH_PROBABILITY = 0.12;
+const CHAR_FLIP_PROBABILITY = 0.03;  // Reduced from 0.06
+const ECHO_PROBABILITY = 0.04;       // Reduced from 0.08
+const COLOR_FLASH_PROBABILITY = 0.08; // Reduced from 0.12
 const GLITCH_CHARS = ["#", "%", "█", "░", "▓", "/", "\\", "_", "x", "*"];
 
 // Color palette
