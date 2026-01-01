@@ -12,15 +12,17 @@ function setup() {
 }
 
 function calculateCanvasHeight() {
-  // Get actual heights of header and footer elements
+  // Get actual heights of header, social links, and footer elements
   let header = document.querySelector('header');
+  let socialLinks = document.querySelector('.social-links');
   let footer = document.querySelector('footer');
   let headerHeight = header ? header.offsetHeight : 60;
+  let socialHeight = socialLinks ? socialLinks.offsetHeight : 80;
   let footerHeight = footer ? footer.offsetHeight : 60;
 
   // Add small buffer for safety
   let buffer = 20;
-  let availableHeight = windowHeight - headerHeight - footerHeight - buffer;
+  let availableHeight = windowHeight - headerHeight - socialHeight - footerHeight - buffer;
 
   // Ensure minimum height
   return max(availableHeight, 200);
