@@ -20,8 +20,8 @@ function calculateCanvasHeight() {
   let socialHeight = socialLinks ? socialLinks.offsetHeight : 80;
   let footerHeight = footer ? footer.offsetHeight : 60;
 
-  // Add small buffer for safety
-  let buffer = 20;
+  // Add larger buffer for safety to ensure footer is visible
+  let buffer = 30;
   let availableHeight = windowHeight - headerHeight - socialHeight - footerHeight - buffer;
 
   // Ensure minimum height
