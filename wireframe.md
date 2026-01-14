@@ -38,8 +38,8 @@ graph TD
     %% Social Links
     SOCIAL --> INSTA[Instagram Icon Button]
     SOCIAL --> YOUTUBE[YouTube Icon Button]
-    INSTA -->|Opens| INSTA_LINK[instagram.com/noir_mak]
-    YOUTUBE -->|Opens| YT_LINK[youtube.com/@NoirMak]
+    INSTA -->|Opens| INSTA_EXT[instagram.com/noir_mak]
+    YOUTUBE -->|Opens| YT_EXT[youtube.com/@NoirMak]
 
     %% Footer Navigation
     FOOTER --> WORK_BTN[recent work - Button]
