@@ -39,7 +39,7 @@ graph TD
     SOCIAL --> INSTA[Instagram Icon Button]
     SOCIAL --> YOUTUBE[YouTube Icon Button]
     INSTA -->|Opens| INSTA_EXT[instagram.com/noir_mak]
-    YOUTUBE -->|Opens| YT_EXT[youtube.com/@NoirMak]
+    YOUTUBE -->|Opens| YT_EXT[youtube.com/NoirMak]
 
     %% Footer Navigation
     FOOTER --> WORK_BTN[recent work - Button]
@@ -78,11 +78,11 @@ graph TD
 ```mermaid
 graph TB
     subgraph "index.html - Main Page"
-        H[Header - Fixed Top<br/>noir mak | about]
-        C[Canvas Container<br/>Dynamic Height<br/>Pure Black #000000]
-        K[Kinetic Typography<br/>Noir Mak - Wave Animation<br/>Interactive Glitch Effects]
-        S[Social Links Section<br/>Instagram | YouTube<br/>Circular SVG Icons]
-        F[Footer - Fixed Bottom<br/>recent work]
+        H["Header - Fixed Top<br/>noir mak + about"]
+        C["Canvas Container<br/>Dynamic Height<br/>Pure Black #000000"]
+        K["Kinetic Typography<br/>Noir Mak - Wave Animation<br/>Interactive Glitch Effects"]
+        S["Social Links Section<br/>Instagram + YouTube<br/>Circular SVG Icons"]
+        F["Footer - Fixed Bottom<br/>recent work"]
     end
 
     subgraph "work.html - Projects Page"
