@@ -1,5 +1,19 @@
 # Noir Mak Website - Wireframe & Interaction Diagram
 
+## Executive Summary
+
+This wireframe documents a minimalist portfolio website for Noir Mak that prioritizes visual impact through interactive kinetic typography. The site features a pure black aesthetic with vibrant glitch effects that activate on user interaction, creating an engaging digital art experience.
+
+**Core Experience**: The centerpiece is an animated "Noir Mak" text canvas built with p5.js that responds to hover (desktop) or tap (mobile) with chromatic aberration, character bitflipping, and color flashes in electric blue, hot pink, bright yellow, and chartreuse. The typography uses continuous wave motion animation, establishing movement even in its idle state.
+
+**Structure**: The single-page architecture keeps navigation simple with a header containing an "about" modal, social media links to Instagram and YouTube, and a footer button leading to a dedicated work portfolio page showcasing four projects: stillbecoming, Stitched in Code, Lumyn, and Undertones.
+
+**Technical Approach**: The site is fully responsive with breakpoints at 768px (tablet) and 480px (mobile), featuring dynamic canvas height calculation to ensure all elements remain visible without scrolling. Touch event handling is carefully engineered to support both canvas interactions and button functionality on mobile devices.
+
+**Design Philosophy**: Every element serves the core experience—pure black backgrounds eliminate distraction, monospace Courier New typography reinforces the glitch aesthetic, and minimal UI chrome keeps focus on the kinetic text. The result is a portfolio that doubles as an interactive art piece, immediately communicating Noir Mak's creative approach through experience rather than explanation.
+
+---
+
 ## Site Architecture & User Flow
 
 ```mermaid
