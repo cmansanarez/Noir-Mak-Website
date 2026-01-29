@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <title>Recent Work - Noir Mak</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="work-sketch.js"></script>
 
     <style>
       html, body {
@@ -13,14 +15,36 @@
         background: #000000;
         color: #ffffff;
         font-family: monospace;
+        overflow-x: hidden;
       }
 
       body {
+        position: relative;
+        min-height: 100vh;
+      }
+
+      /* Canvas background layer */
+      #canvas-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      /* Frosted glass content container */
+      .content-wrapper {
+        position: relative;
+        z-index: 2;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         min-height: 100vh;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.3);
       }
 
       h1 {
@@ -72,6 +96,7 @@
         position: fixed;
         top: 20px;
         left: 20px;
+        z-index: 3;
       }
 
       /* Mobile responsive styles */
@@ -117,15 +142,21 @@
     </style>
   </head>
   <body>
-    <button class="back-button" onclick="window.location.href='index.html'">back</button>
+    <!-- Canvas background layer -->
+    <div id="canvas-background"></div>
 
-    <h1>Recent Work</h1>
+    <!-- Frosted glass content layer -->
+    <div class="content-wrapper">
+      <button class="back-button" onclick="window.location.href='index.html'">back</button>
 
-    <div class="work-container">
-      <a href="https://stillbecoming.noirmak.com" target="_blank" class="work-button">stillbecoming</a>
-      <a href="https://stitchedincode.noirmak.com" target="_blank" class="work-button">Stitched in Code</a>
-      <a href="https://lumyn.noirmak.com" target="_blank" class="work-button">Lumyn</a>
-      <a href="https://undertones.noirmak.com" target="_blank" class="work-button">Undertones</a>
+      <h1>Recent Work</h1>
+
+      <div class="work-container">
+        <a href="https://stillbecoming.noirmak.com" target="_blank" class="work-button">stillbecoming</a>
+        <a href="https://stitchedincode.noirmak.com" target="_blank" class="work-button">Stitched in Code</a>
+        <a href="https://lumyn.noirmak.com" target="_blank" class="work-button">Lumyn</a>
+        <a href="https://undertones.noirmak.com" target="_blank" class="work-button">Undertones</a>
+      </div>
     </div>
   </body>
 </html>
