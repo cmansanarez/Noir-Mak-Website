@@ -167,6 +167,12 @@
         z-index: -1 !important;
         width: 100vw !important;
         height: 100vh !important;
+        /* Ensure smooth anti-aliased rendering */
+        image-rendering: auto;
+        /* Prevent subpixel rendering issues and enable hardware acceleration */
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
       }
 
       /* Main content container - centered text */

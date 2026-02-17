@@ -1,13 +1,61 @@
-// Initialize Hydra with manual canvas creation (like Glitch_Tunnel)
+// Create canvas element
+const canvas = document.createElement('canvas');
+
+// Function to calculate and set proper resolution
+function updateCanvasResolution() {
+  // Get device pixel ratio (2 on Retina, 1 on standard displays)
+  const dpr = window.devicePixelRatio || 1;
+
+  // Get CSS dimensions (viewport size)
+  const cssWidth = window.innerWidth;
+  const cssHeight = window.innerHeight;
+
+  // Calculate actual pixel dimensions
+  const pixelWidth = Math.floor(cssWidth * dpr);
+  const pixelHeight = Math.floor(cssHeight * dpr);
+
+  // Set canvas internal resolution (drawing buffer size)
+  canvas.width = pixelWidth;
+  canvas.height = pixelHeight;
+
+  // CSS size stays at viewport dimensions (handled by CSS)
+  // The canvas will scale the high-res buffer down to CSS size
+
+  // Tell Hydra the new resolution
+  if (window.hydra) {
+    window.hydra.setResolution(pixelWidth, pixelHeight);
+  }
+
+  return { pixelWidth, pixelHeight, dpr };
+}
+
+// Initialize Hydra with the canvas
 const hydra = new Hydra({
-  canvas: document.createElement('canvas'),
-  detectAudio: false
+  canvas: canvas,
+  detectAudio: false,
+  width: Math.floor(window.innerWidth * (window.devicePixelRatio || 1)),
+  height: Math.floor(window.innerHeight * (window.devicePixelRatio || 1))
 });
 
-// Insert canvas at the beginning of body
-document.body.insertBefore(hydra.canvas, document.body.firstChild);
+// Store hydra instance globally for resize handler
+window.hydra = hydra;
 
-console.log('Hydra initialized');
+// Insert canvas at the beginning of body
+document.body.insertBefore(canvas, document.body.firstChild);
+
+// Set initial resolution
+const initialRes = updateCanvasResolution();
+console.log(`Hydra initialized at ${initialRes.pixelWidth}x${initialRes.pixelHeight} (DPR: ${initialRes.dpr})`);
+
+// Handle window resize with debouncing to avoid excessive redraws
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    const res = updateCanvasResolution();
+    console.log(`Canvas resized to ${res.pixelWidth}x${res.pixelHeight} (DPR: ${res.dpr})`);
+  }, 100);
+});
 
 // Parallel Arrays
 // Cam Mansanarez | @noir_mak
