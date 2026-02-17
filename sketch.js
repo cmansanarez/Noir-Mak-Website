@@ -16,33 +16,19 @@ const YELLOW = [255, 236, 0];      // #ffec00
 const CHARTREUSE = [188, 248, 4];  // #bcf804
 
 function setup() {
-  // Calculate available height dynamically based on actual header/footer heights
-  let canvas = createCanvas(windowWidth, calculateCanvasHeight());
+  // Create canvas with specific size that fits in the container
+  let canvasWidth = min(windowWidth * 0.9, 1200);
+  let canvasHeight = min(windowHeight * 0.6, 600);
+
+  let canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.parent('canvas-container');
   textAlign(LEFT, CENTER);
   textFont("monospace");
   noStroke();
 }
 
-function calculateCanvasHeight() {
-  // Get actual heights of header, social links, and footer elements
-  let header = document.querySelector('header');
-  let socialLinks = document.querySelector('.social-links');
-  let footer = document.querySelector('footer');
-  let headerHeight = header ? header.offsetHeight : 60;
-  let socialHeight = socialLinks ? socialLinks.offsetHeight : 80;
-  let footerHeight = footer ? footer.offsetHeight : 60;
-
-  // Add larger buffer for safety to ensure footer is visible
-  let buffer = 30;
-  let availableHeight = windowHeight - headerHeight - socialHeight - footerHeight - buffer;
-
-  // Ensure minimum height
-  return max(availableHeight, 200);
-}
-
 function draw() {
-  background(0);
+  clear(); // Make canvas transparent to show Hydra background
 
   let t = millis() * 0.002; // controls animation speed
 
@@ -161,5 +147,7 @@ function touchStarted() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, calculateCanvasHeight());
+  let canvasWidth = min(windowWidth * 0.9, 1200);
+  let canvasHeight = min(windowHeight * 0.6, 600);
+  resizeCanvas(canvasWidth, canvasHeight);
 }
