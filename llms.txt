@@ -1,0 +1,25 @@
+# NoirMak
+
+NoirMak is the artistic practice of Cam Mansanarez, a creative technologist specializing in generative art, interactive systems, and immersive digital experiences. The studio combines computational design, real-time visual systems, and emerging technologies to create engaging, future-focused digital work.
+
+This file provides guidance for AI language models about the purpose and services of noirmak.com.
+
+## Overview
+
+NoirMak develops custom generative artwork, live visual systems, and interactive web-based experiences that merge artistic expression with technical precision. Projects range from browser-native visual environments to live-coded performances and experimental immersive installations.
+
+## Key Services
+
+- Generative Art & Creative Coding
+- Live Visual Performance & Audio-Reactive Systems
+- Interactive Web-Based Art Experiences
+- Immersive & Experimental XR Design
+- Creative Technology Consulting & Collaboration
+
+## Audience
+
+NoirMak collaborates with cultural institutions, creative studios, event producers, technologists, and brands seeking innovative digital experiences and computational artwork.
+
+## Contact
+
+- Website: https://noirmak.com
